@@ -44,6 +44,6 @@ my_map<-data.frame(
   addTiles()     %>%
   addMarkers(icon=testIcon,popup=links,clusterOptions=markerClusterOptions()) %>%
   addCircleMarkers(popup=links,clusterOptions=markerClusterOptions(),radius=30,weight=3,col=c("green","yellow","green","red","red","red","yellow","green")) %>%
-  addLegend(labels=c("¥1000/hr","¥550/30 mins", "¥200/10mins"), colors=c("green","yellow","red"))
+  addLegend(labels=c("Yen1000/hr","Yen550/30 mins", "Yen200/10mins"), colors=c("green","yellow","red"))
 my_map
 ```
