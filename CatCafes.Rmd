@@ -1,0 +1,49 @@
+---
+title: "8 Best Tokyo Cat Cafes"
+date: "30 November 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r,eval=TRUE,echo=FALSE}
+library(leaflet)
+
+testIcon<-makeIcon(
+  iconUrl = "http://icons.iconarchive.com/icons/iconka/meow/256/cat-walk-icon.png",
+  iconWidth = 50,
+  iconHeight = 50,
+  iconAnchorX=25,
+  iconAnchorY=25
+  )
+links<-c("<a href='http://catcafe.jp/'>Calico, Shinjuku</a> 
+         <br> This place is the largest cat cafe in tokyo and has over 50 cats   living in a two floor facility in the middle of Shinjuku",
+         "<a href='http://www.nekojalala.com'>Neko JaLaLa, Akihabara</a>
+         <br>Place with exotic breeds such as Main Coons and Bengal cats",
+          "<a href='http://www.catcafe-akiba.com'> Nyanny, Akihabara</a>
+         <br>A cat mansion, offering a more spacious and more relaxed environment for both the cats and its doting guests.",
+          "<a href='http://www.catmocha.jp'>MoCHA, Shibuya</a>
+         <br>MoCHA is a notch above the competition with its stylish interiors made not just to look pretty, but also to delight our furry friends. At this location you will get a good view over the famous crossing",
+          "<a href='http://www.catmocha.jp'>MoCHA, Harajuku</a>
+         <br>MoCHA is a notch above the competition with its stylish interiors made not just to look pretty, but also to delight our furry friends. This place has an Alice in wonderland themed interior",
+          "<a href='http://cafe-monta.jugem.jp'>MONTA, Asakusa</a>
+         <br>Fancy place with more food on the menue than you usually get in cat cafes",
+          "<a href='http://www.asakusanekoen.com'>Asakusa Nekoen</a>
+          <br>All the cats are previous stray cats in this place and it offers a more intimate experience.",
+          "<a href='http://cateriam.com'>Cateriam, Shimokitazawa</a>
+          <br>Hip cafe where the cats each have their own twitter feed.")
+
+my_map<-data.frame(
+  lat=c(35.6937183,35.7018574,35.702602,35.6488153,35.6699959,35.7120631,35.7160544,35.6620585),
+  lng=c(139.7020466,139.7694692,139.772464,139.7013271,139.7030141,139.7979664,139.798419,139.6660399)
+  ) %>% 
+  leaflet()    %>% 
+  addTiles()     %>%
+  addMarkers(icon=testIcon,popup=links,clusterOptions=markerClusterOptions()) %>%
+  addCircleMarkers(popup=links,clusterOptions=markerClusterOptions(),radius=30,weight=3,col=c("green","yellow","green","red","red","red","yellow","green")) %>%
+  addLegend(labels=c("¥1000/hr","¥550/30 mins", "¥200/10mins"), colors=c("green","yellow","red"))
+my_map
+```
